@@ -43,7 +43,6 @@ const PagesRouter = () => {
                     )
                 })}
             </Routes>
-
         </BrowserRouter>
     )
 }

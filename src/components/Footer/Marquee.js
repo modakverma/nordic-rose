@@ -2,9 +2,8 @@ import { twMerge } from "tailwind-merge"
 import useFetchData from "../../hooks/useFetchData"
 import Loader from "../Loader"
 
-
 const Marquee = () => {
-  const url = 'http://localhost:4000/tags';
+  const url = 'https://nordic-rose-api.onrender.com/tags';
   const { data, isLoading } = useFetchData(url, 'tags') 
   if (isLoading) {
     return <Loader/>

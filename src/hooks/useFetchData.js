@@ -11,7 +11,8 @@ export const useFetchData = (url,id) => {
     return axios.get(url)
   }
   return useQuery(id, fetchArticles,{
-    onError
+    onError,
+    
   })
 }
 

@@ -6,8 +6,8 @@ const NavbarItem = ({ item }) => {
     const {pathname} = useLocation();
     return (
         <div className={twMerge([
-            'font-black inline-block py-8 text-lg uppercase h-full',
-            pathname === item.path && "border-b-2 border-black transition"
+            'rounded-lg lg:rounded-none lg:font-black w-full flex items-center justify-center hover:bg-slate-300/20 lg:hover:bg-primary transition lg:inline-block py-4 lg:py-8 text-lg uppercase h-full text-sm md:text-base lg:text-xl',
+            pathname === item.path && "lg:border-b-2 border-black transition"
         ])} key={item.label} ><Link to={item.path}>{item.label}</Link></div>
     )
 }
