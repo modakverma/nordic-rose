@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <div className="flex w-full items-center justify-between px-10 border-b">
       <Logo dest="navbar" />
-      <div className='flex'>
+      <div className='flex hidden md'>
         <Input
           placeholder="Enter here"
         />

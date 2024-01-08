@@ -29,9 +29,9 @@ const Home = () => {
                 <h1 className='font-black text-5xl text-center'>{banner.title}</h1>
                 <p className='w-3/5 text-center font-sans font-light text-xl tracking-wide'>{ banner.subtitle}</p>
             </div>
-            <div className='border-t-[1.8px] w-[41rem] pt-10 border-black flex items-center justify-center w-full flex-col'>
+            <div className='border-t-[1.8px] w-[40rem] pt-10 border-black flex items-center justify-center w-full flex-col'>
             <h1 className='font-black text-3xl pb-6'>All Articles</h1>
-            <div className='font-sans w-full grid grid-cols-2  gap-y-4'>
+            <div className='font-sans w-full grid grid-cols-1 md:grid-cols-2  gap-y-4'>
             {blogs?.map(blog => (
                 <BlogCard key={blog.id} blog={blog}  />
             ))}
