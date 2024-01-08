@@ -1,0 +1,101 @@
+{
+  "home":{
+    "banner": {
+        "id": "418320b6-8764-497e-a6af-1bce54f580e5",
+        "title": "A few words about this blog platform, Ghost, and how this site was made",
+        "subtitle": "Why Ghost (& Figma) instead of Medium, WordPress or other options?",
+        "bannerImg": "https://plus.unsplash.com/premium_photo-1682125227290-f62abb91ed5b?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    "blogs": [
+        {
+            "id": "4ef728db-a33f-4b52-98f2-ae8eaf4b18e0",
+            "title": "Here are some things you should know regarding how we work ",
+            "bannerImg": "https://plus.unsplash.com/premium_photo-1682125227290-f62abb91ed5b?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            "id": "9714039b-fe84-4a4d-aa00-0fc0f17c7af4",
+            "title": "Granny gives everyone the finger, and other tips from OFFF Barcelona",
+            "bannerImg": "https://plus.unsplash.com/premium_photo-1682125227290-f62abb91ed5b?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            "id": "c0a889fa-9895-4747-a1d0-48fd48eca435",
+            "title": "Hello world, or, in other words, why this blog exists",
+            "bannerImg": "https://plus.unsplash.com/premium_photo-1682125227290-f62abb91ed5b?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            "id": "b69537ac-ccd6-4d00-b4eb-b62cb1899a3d",
+            "title": "title",
+            "bannerImg": "https://plus.unsplash.com/premium_photo-1682125227290-f62abb91ed5b?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            "id": "2dcd3aa6-65d0-447c-82f9-941caabe8134",
+            "title": "title",
+            "bannerImg": "https://plus.unsplash.com/premium_photo-1682125227290-f62abb91ed5b?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            "id": "3b97be19-f33c-4589-8ef4-b8bf4f0e1d31",
+            "title": "title",
+            "bannerImg": "https://plus.unsplash.com/premium_photo-1682125227290-f62abb91ed5b?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            "id": "2af2f53b-71cf-429a-999e-2a9055e7a4ce",
+            "title": "title",
+            "bannerImg": "https://plus.unsplash.com/premium_photo-1682125227290-f62abb91ed5b?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            "id": "f5e9b5ec-10f7-43ab-a38e-f36bdc9b16d0",
+            "title": "title",
+            "bannerImg": "https://plus.unsplash.com/premium_photo-1682125227290-f62abb91ed5b?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            "id": "cad0b653-2bf1-40d4-856c-c4a1f46cf2a5",
+            "title": "title",
+            "bannerImg": "https://plus.unsplash.com/premium_photo-1682125227290-f62abb91ed5b?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            "id": "b80cf47a-4e43-4afe-bc0e-11aab8460f3e",
+            "title": "title",
+            "bannerImg": "https://plus.unsplash.com/premium_photo-1682125227290-f62abb91ed5b?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
+    ],
+    "totalPages": [
+        1,
+        2
+    ]
+},
+
+"tags":[
+    {
+        "id": 1,
+        "title": "tag1"
+    },
+    {
+        "id": 2,
+        "title": "tag2"
+    },
+    {
+        "id": 3,
+        "title": "tag3"
+    },
+    {
+        "id": 4,
+        "title": "tag4"
+    },
+    {
+        "id": 5,
+        "title": "tag5"
+    },
+    {
+        "id": 6,
+        "title": "tag6"
+    },
+    {
+        "id": 7,
+        "title": "tag7"
+    },
+    {
+        "id": 8,
+        "title": "tag8"
+    }
+]
+}
