@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BlogCard from '../components/BlogCard'
 import useFetchData from '../hooks/useFetchData';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
+import { PROD_URL } from '../utils/http';
 
 const Home = () => {
-    const url = 'http://localhost:4000/home';
-    const { isLoading, data, isError, error } = useFetchData(url,'home')
+    const [perPage, setPerPage] = useState(10);
+    const [currentBanner, setCurrentBanner] = useState('');
+    const subUrl = `/home?perPage=${perPage}&currentBanner=${currentBanner}`;
+    const { isLoading, data, isError, error } = useFetchData(PROD_URL+subUrl,'home')
 
     if (isLoading) {
         return <Loader/>
@@ -15,9 +18,8 @@ const Home = () => {
         return <Error error={error} />
     }
 
-    const { blogs, banner } = data?.data;
-    
-    const paginationArray = [...Array(3).keys()].slice(1);
+    const { blogs, banner,totalPages } = data?.data;
+    console.log(blogs)
 
     return (
         <div className='bg-primary flex flex-col items-center py-20'>
@@ -40,7 +42,7 @@ const Home = () => {
             {/* PAGINATION */}
             <div className='flex gap-5 pt-12 w-full items-center justify-center'>
                 <span className='cursor-pointer hover:scale-125 transition'>{'<< '}prev</span>
-                {paginationArray.map(page => (
+                {totalPages.map(page => (
                 <div className='rounded w-6 h-6 bg-slate-200 flex items-center justify-center cursor-pointer hover:scale-125 hover:bg-slate-300 transition'>{page}</div>
                 ))}
                 <span className='cursor-pointer hover:scale-125 transition'>next{' >>'}</span>
