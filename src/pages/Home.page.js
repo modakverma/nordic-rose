@@ -7,7 +7,7 @@ import { PROD_URL } from '../utils/http';
 import { twMerge } from 'tailwind-merge';
 
 const Home = () => {
-    const perPage = 5;
+    const perPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
     const[bannerData,setBannerData] = useState(null)
     const subUrl = `/home?perPage=${perPage}&pageNo=${currentPage}&currentBanner=${bannerData?.id}`;
