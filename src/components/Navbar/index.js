@@ -11,15 +11,22 @@ const Navbar = () => {
   const handleMenuToggle = () => {
     setShowMenu(prev => !prev);
   }
+  const handleSearch = () => {
+    
+  }
   return (
     <div className="flex gap-4 w-full items-center justify-between px-4 sm:px-10 border-b h-24 relative">
       <Logo dest="navbar" />
+
+      {/*=== SERRCH BAR ===*/}
       <div className='hidden lg:flex'>
         <Input
+          onChange={handleSearch}
           placeholder="Enter here..."
         />
         <Button>Search</Button>
       </div>
+
       <div className='hidden lg:flex gap-5'>
         {NAVBAR_ITEMS.map((item) => (
           <NavbarItem item={item} />)
