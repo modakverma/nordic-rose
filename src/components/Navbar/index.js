@@ -61,12 +61,11 @@ const Navbar = () => {
                 onChange={handleKeywordChange}
                 placeholder="Enter here..."
               />
-          {isLoading ?
-            <Loader />:
+          
             <Button
               onClick={handleSearch}
-            >Search</Button>
-          }
+            >{isLoading?'Loading...':'Search'}</Button>
+       
             </div>
         {searchData && showDropDown && <DropDown
           className="hidden lg:block"
@@ -98,12 +97,9 @@ const Navbar = () => {
                 onChange={handleKeywordChange}
                 placeholder="Enter here..."
               />
-              {isLoading ?
-              <Loader />:
               <Button
               onClick={handleSearch}
-              >Search</Button>
-              }
+            >{isLoading?'Loading...':'Search'}</Button>
             </div>
             {searchData && showDropDown && <DropDown
               className='right-0'
