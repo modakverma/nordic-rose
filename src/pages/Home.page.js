@@ -5,11 +5,13 @@ import Loader from '../components/Loader';
 import Error from '../components/Error';
 import { PROD_URL } from '../utils/http';
 import { twMerge } from 'tailwind-merge';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+    const navigate = useNavigate()
     const perPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
-    const[bannerData,setBannerData] = useState(null)
+    const [bannerData, setBannerData] = useState(null);
     const subUrl = `/home?perPage=${perPage}&pageNo=${currentPage}&currentBanner=${bannerData?.id}`;
     const { isLoading, data, isError, error, refetch } = useFetchData(PROD_URL + subUrl, 'home')
     
@@ -36,9 +38,15 @@ const Home = () => {
         setCurrentPage(page)
     }
 
+    const handleBannerBlogNavigate = () => [
+        navigate(`/blog/${bannerData.id}`)
+    ]
+
     return (
         <div className='bg-primary flex flex-col items-center py-20'>
-           {bannerData ? <div className='flex w-[56rem] justify-center flex-col gap-5 pb-8 items-center'>
+            {bannerData ? <div
+                onClick={handleBannerBlogNavigate}
+                className='flex hover:opacity-85 transition cursor-pointer w-[56rem] justify-center flex-col gap-5 pb-8 items-center'>
                 <img src={bannerData.bannerImg}
                     className='h-[32rem] w-full'
                     alt="bannerImg"
