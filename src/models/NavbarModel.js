@@ -6,13 +6,5 @@ export const NAVBAR_ITEMS =[
     {
         label:"About",
         path:'/about'
-    },
-    {
-        label:"Links",
-        path:'/links'
-    },
-    {
-        label:"Projets",
-        path:'/projects'
-    },
+    }
 ]

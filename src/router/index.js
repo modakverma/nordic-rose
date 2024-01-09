@@ -1,8 +1,6 @@
 import React from 'react';
 import Home from "../pages/Home.page";
 import About from '../pages/About.page';
-import Links from '../pages/Links.page';
-import Projects from '../pages/Projects.page';
 import {
     BrowserRouter,
     Route,
@@ -20,14 +18,6 @@ const PagesRouter = () => {
         {
             path: "/about",
             component: <About />,
-        },
-        {
-            path: "/links",
-            component: <Links />,
-        },
-        {
-            path: "/projects",
-            component: <Projects />,
         },
         {
             path: "/blog/:blogId",

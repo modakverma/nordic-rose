@@ -7,8 +7,6 @@ import Button from '../../base-components/Button'
 import hamburgerIcon from '../../assets/hamburger-icon.svg'
 import { PROD_URL } from '../../utils/http'
 import useSearchData from '../../hooks/useSearchData'
-import Loader from '../Loader';
-import Error from '../Error';
 import DropDown from '../../base-components/DropDown';
 import { toast } from 'react-toastify';
 
@@ -20,7 +18,7 @@ const Navbar = () => {
     setShowMenu(prev => !prev);
   }
   const subUrl = `/search?keyword=${keyword}`
-  const {data,isLoading,isError,error,refetch} = useSearchData(PROD_URL+subUrl,'search')
+  const {data,isLoading,isError,refetch} = useSearchData(PROD_URL+subUrl,'search')
 
   let searchData = data?.data;
   const handleSearch = () => {
@@ -97,7 +95,7 @@ const Navbar = () => {
                 onChange={handleKeywordChange}
                 placeholder="Enter here..."
               />
-              <Button
+            <Button
               onClick={handleSearch}
             >{isLoading?'Loading...':'Search'}</Button>
             </div>
