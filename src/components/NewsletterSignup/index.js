@@ -42,7 +42,7 @@ return (
             <Button
             type="submit"
             >sign up</Button>
-            </form>
+        </form>
     </div>
 )
 }
