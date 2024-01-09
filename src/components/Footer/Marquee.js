@@ -1,13 +1,18 @@
 import { twMerge } from "tailwind-merge"
 import useFetchData from "../../hooks/useFetchData"
 import Loader from "../Loader"
+import { PROD_URL } from "../../utils/http"
+import Error from "../Error"
 
 const Marquee = () => {
-  const url = 'https://nordic-rose-api.onrender.com/tags';
-  const { data, isLoading } = useFetchData(url, 'tags') 
+  const subUrl = '/tags';
+  const { data, isLoading,isError,error } = useFetchData(PROD_URL+subUrl,'tags') 
   if (isLoading) {
     return <Loader/>
   }
+  if (isError) {
+    return <Error error={error} />
+}
 
   return (
     <div className="flex items-end gap-8 overflow-x-auto w-auto">
