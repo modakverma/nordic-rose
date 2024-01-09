@@ -9,14 +9,12 @@ import { twMerge } from 'tailwind-merge';
 const Home = () => {
     const perPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
-    const [currentBanner, setCurrentBanner] = useState(null);
     const[bannerData,setBannerData] = useState(null)
-    const subUrl = `/home?perPage=${perPage}&pageNo=${currentPage}&currentBanner=${currentBanner}`;
+    const subUrl = `/home?perPage=${perPage}&pageNo=${currentPage}&currentBanner=${bannerData?.id}`;
     const { isLoading, data, isError, error, refetch } = useFetchData(PROD_URL + subUrl, 'home')
     
     useEffect(() => {
         if (data && data.data && data.data.banner) {
-            setCurrentBanner(data.data.banner.id);
             setBannerData(data.data.banner)
         }
     }, [data]);
@@ -40,14 +38,14 @@ const Home = () => {
 
     return (
         <div className='bg-primary flex flex-col items-center py-20'>
-           {bannerData && <div className='flex w-[56rem] justify-center flex-col gap-5 pb-8 items-center'>
+           {bannerData ? <div className='flex w-[56rem] justify-center flex-col gap-5 pb-8 items-center'>
                 <img src={bannerData.bannerImg}
                     className='h-[32rem] w-full'
                     alt="bannerImg"
                 />
                 <h1 className='font-black text-5xl text-center'>{bannerData.title}</h1>
                 <p className='w-3/5 text-center font-sans font-light text-xl tracking-wide'>{ bannerData.subtitle}</p>
-            </div>}
+            </div>:null}
             <div className='border-t-[1.8px] w-[40rem] pt-10 border-black flex items-center justify-center w-full flex-col'>
             <h1 className='font-black text-3xl pb-6'>All Articles</h1>
             <div className='font-sans w-full grid grid-cols-1 md:grid-cols-2 gap-y-4'>
