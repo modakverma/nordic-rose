@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import NewsletterSignup from '../components/NewsletterSignup';
 
 const Article = () => {
   (function() {
@@ -16,7 +17,7 @@ const Article = () => {
       
 
       <div>
-        
+        <NewsletterSignup/>
       </div>
     </div>
   )
