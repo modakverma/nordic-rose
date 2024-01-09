@@ -82,7 +82,7 @@ const Navbar = () => {
       </div>
         <img
           onClick={handleMenuToggle}
-          className="lg:hidden w-14 p-2  cursor-pointer hover:bg-slate-300/20 transition rounded-lg"
+          className="lg:hidden w-14 p-2 cursor-pointer hover:bg-slate-300/20 transition rounded-lg"
         src={hamburgerIcon} alt="hamburger-icon-url" />
       
       {/* === MOBILE VIEW === */}
