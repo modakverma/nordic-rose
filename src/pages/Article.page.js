@@ -84,12 +84,12 @@ const Article = () => {
         {/* SHARE ON MEDIA */}
         <SocialLink
         className='sm:h-16'
-          linkFb='/'
-          linkTwt='/'
-          linkWa='/'
+          linkFb=' '
+          linkTwt=' '
+          linkWa=' '
           FbText='Share on Facebook'
           TwtText='Share on Facebook'
-            />
+          />
             {/* TAGS */}
             <h1 className='flex gap-2 font-sans'>
             Tags: 
