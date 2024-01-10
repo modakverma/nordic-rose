@@ -2,6 +2,7 @@ import React from 'react'
 import Logo from '../Logo'
 import Marquee from './Marquee'
 import { FOOTER_MODEL } from '../../models/FooterModel'
+import Anchor from '../../base-components/Anchor'
 
 const Footer = () => {
   const {companyDetails,social } = FOOTER_MODEL;
@@ -13,7 +14,10 @@ const Footer = () => {
         <p>{companyDetails}</p>
         <div className='w-full flex gap-4 justify-center'>
           {social.map(media => (
-            <a target='blank' className='font-sans border-b' href={media.href}>{ media.label}</a>
+            <Anchor
+            className='text-white'
+            href={media.href}
+          >{media.label}</Anchor>
           ))}
         </div>
       </div>
