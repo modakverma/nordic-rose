@@ -52,17 +52,21 @@ const Article = () => {
       <div className='w-full h-full p-6 sm:px-20 md:px-40 lg:px-80 pb-20'>
         <div className='border-t-2 border-black'>
           {/* AUTHOR DETAILS 1 */}
-          <div className='flex justify-between items-center'>
+          <div className='flex flex-col sm:flex-row justify-between sm:items-center'>
           <div className='flex gap-2 font-sans py-4'>
-            <img
-              className='w-10 rounded-full'
+            <img className='w-10 rounded-full'
               src={article.Author.profileImg} alt="" />
             <div>
-              <h1>{article.Author.fullName}</h1>
-                <p className='font-light text-sm'>{time}{' . '}{getAverageReadTime()} min read</p>
+              <h1 className='text-xs sm:text-normal'>{article.Author.fullName}</h1>
+                <p className='font-light text-xs sm:text-sm'>{time}{' . '}{getAverageReadTime()} min read</p>
             </div>
             </div>
-            <SocialLink linkFb={article.Author.linkFb} linkTwt={article.Author.linkTwt} />
+            <SocialLink
+              className='w-full sm:w-auto'
+              linkFb={article.Author.linkFb}
+              linkTwt={article.Author.linkTwt}
+              linkWa={article.Author.linkWa}
+            />
           </div>
 
           <div className='flex flex-col gap-8 py-6 items-center'>
@@ -70,7 +74,7 @@ const Article = () => {
             <h1 className='font-bold text-xl font-sans flex-start w-full'>{article.subheading}</h1>
             <div className='text-center font-sans text-sm lg:text-lg font-medium  sm:w-[120%]'>
               <img className='w-full' src={article.contentImg} alt="cotent-img" />
-              <p className='px-20'>{ article.contentImgDesc}</p>
+              <p className='sm:px-20'>{ article.contentImgDesc}</p>
             </div>
             <p>{ article.description}</p>
           </div>
@@ -79,11 +83,12 @@ const Article = () => {
         <div className='flex flex-col gap-8 py-10'>
         {/* SHARE ON MEDIA */}
         <SocialLink
-        className='h-16'
+        className='sm:h-16'
           linkFb='/'
+          linkTwt='/'
+          linkWa='/'
           FbText='Share on Facebook'
           TwtText='Share on Facebook'
-        linkTwt='/'
             />
             {/* TAGS */}
             <h1 className='flex gap-2 font-sans'>
@@ -113,11 +118,11 @@ const Article = () => {
       </div>
 
       {/* READ NEXT SECTION */}
-      <div className='relative w-full flex flex-col items-center px-40 py-20 border-t-[1.5px] border-black'>
+      <div className='relative w-full flex flex-col items-center sm:px-10 md:px-40 lg:px-52 py-10 border-t-[1.5px] border-black'>
         <img src={eyesUrl} alt="eyesImg" className='absolute -top-8' />
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center py-16'>
           <h1 className='font-black text-3xl'>What to read next</h1>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
           {readNext.map(blog => (
             <BlogCard
               className="text-sm w-full"
@@ -126,7 +131,9 @@ const Article = () => {
           }
           </div>
         </div>
+        <div className='sm:px-20'>
         <NewsletterSignup/>
+        </div>
       </div>
     </div>
   )

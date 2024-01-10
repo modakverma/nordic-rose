@@ -46,17 +46,17 @@ const Home = () => {
         <div className='bg-primary flex flex-col items-center py-20'>
             {bannerData ? <div
                 onClick={handleBannerBlogNavigate}
-                className='flex hover:opacity-85 transition cursor-pointer w-[56rem] justify-center flex-col gap-5 pb-8 items-center'>
+                className='sm:px-6 lg:px-32 xl:px-80 flex hover:opacity-85 transition cursor-pointer w-full justify-center flex-col gap-5 pb-8 items-center'>
                 <img src={bannerData.bannerImg}
-                    className='h-[32rem] w-full'
+                    className='h-full w-full'
                     alt="bannerImg"
                 />
-                <h1 className='font-black text-5xl text-center'>{bannerData.title}</h1>
+                <h1 className='px-6 font-black text-5xl text-center'>{bannerData.title}</h1>
                 <p className='w-3/5 text-center font-sans font-light text-xl tracking-wide'>{ bannerData.subtitle}</p>
             </div>:null}
-            <div className='border-t-[1.8px] w-desktopWidth pt-10 border-black flex items-center justify-center flex-col'>
-            <h1 className='font-black text-3xl pb-6'>All Articles</h1>
-            <div className='font-sans w-full grid grid-cols-1 md:grid-cols-2 gap-y-4'>
+            <div className='border-t-[1.8px] lg:w-desktopWidth pt-10 border-black flex items-center justify-center flex-col'>
+            <h1 className='font-black text-3xl pb-5'>All Articles</h1>
+            <div className='font-sans w-full grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:px-10'>
             {blogs?.map(blog => (
                 <BlogCard key={blog.id} blog={blog}  />
             ))}

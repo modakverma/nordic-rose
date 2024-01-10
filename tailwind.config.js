@@ -17,7 +17,7 @@ module.exports = {
         marquee2: 'marquee2 6s linear infinite'
       },
       width: {
-        desktopWidth: "40rem",
+        desktopWidth: "45rem",
       },
       keyframes: {
         marquee:{
