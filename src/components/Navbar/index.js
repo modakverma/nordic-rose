@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showDropDown, setSowDropDown] = useState(false);
-  const [keyword,setKeyword] = useState('myname')
+  const [keyword,setKeyword] = useState('')
   const handleMenuToggle = () => {
     setShowMenu(prev => !prev);
   }
@@ -49,7 +49,9 @@ const Navbar = () => {
 
   return (
     <div className="flex gap-4 w-full items-center justify-between px-4 sm:px-10 border-b h-24 relative">
-      <Logo dest="navbar" />
+      <Logo
+        className='w-52 sm:w-60 md:w-80'
+        dest="navbar" />
 
       {/*=== SERRCH BAR ===*/}
       <div className='relative'>

@@ -1,15 +1,16 @@
 import { useNavigate } from 'react-router-dom'
 import logoUrl from '../../assets/logo.svg'
 import foorterLogoUrl from '../../assets/footer-logo.svg'
+import { twMerge } from 'tailwind-merge';
 
-const Logo = ({dest}) => {
+const Logo = ({dest,className}) => {
     const navigate = useNavigate();
     const handleNavigate = () => {
         navigate("/")
     }
   return (
       <img
-      className='cursor-pointer'
+      className={twMerge(['cursor-pointer',className])}
       onClick={handleNavigate}
       src={dest==="footer"?foorterLogoUrl:logoUrl} alt="logoUrl"/>
   )
