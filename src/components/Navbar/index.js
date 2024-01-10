@@ -3,12 +3,12 @@ import { NAVBAR_ITEMS } from '../../models/NavbarModel'
 import NavbarItem from './NavbarItem';
 import Logo from '../Logo';
 import Input from '../../base-components/Input'
-import Button from '../../base-components/Button'
 import hamburgerIcon from '../../assets/hamburger-icon.svg'
 import { PROD_URL } from '../../utils/http'
 import useSearchData from '../../hooks/useSearchData'
 import DropDown from '../../base-components/DropDown';
-import { toast } from 'react-toastify';
+import Loader from '../Loader';
+import searchIconUrl from '../../assets/search.svg'
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -18,25 +18,26 @@ const Navbar = () => {
     setShowMenu(prev => !prev);
   }
   const subUrl = `/search?keyword=${keyword}`
-  const {data,isLoading,isError,refetch} = useSearchData(PROD_URL+subUrl,'search')
+  const {data,isLoading,isError,refetch} = useSearchData(PROD_URL+subUrl,`search${keyword}`)
 
   let searchData = data?.data;
-  const handleSearch = () => {
-    if (keyword==='') {
-      toast.warn('Please enter something to search...')
-      return;
-    }
-    setSowDropDown(true)
-    refetch();
-  }
+
   if (isError) {
     searchData = [{
-      id:'1',
+      id:' ',
       title: 'nothing to show...'
     }]
     console.log(isError)
     console.log(isLoading)
   }
+
+  useEffect(() => {
+    if (keyword==='') {
+      return;
+    }
+    refetch();
+    setSowDropDown(true)
+  },[keyword])
 
   const handleKeywordChange = (event) => {
     setKeyword(event.target.value)
@@ -48,24 +49,24 @@ const Navbar = () => {
   }
 
   return (
-    <div className="flex gap-4 w-full items-center justify-between px-4 sm:px-10 border-b h-24 relative">
+    <div className="flex gap-4 w-full items-center justify-between px-4 sm:px-10 border-b h-24">
       <Logo
         className='w-52 sm:w-60 md:w-80'
         dest="navbar" />
 
       {/*=== SERRCH BAR ===*/}
-      <div className='relative'>
-          <div className="hidden lg:flex">
-              <Input
+      <div className=''>
+          <div className="relative hidden lg:flex">
+          <Input
+                className='rounded-xl w-full'
                 value={keyword}
                 onChange={handleKeywordChange}
-                placeholder="Enter here..."
-              />
-          
-            <Button
-              onClick={handleSearch}
-            >{isLoading?'Loading...':'Search'}</Button>
-       
+                placeholder="Search ..."
+          />
+          <div className='w-10 h-10 absolute -left-12 -top-0'>
+            {isLoading ? <Loader className='w-full h-full'  /> : <img className='w-full h-full' src={searchIconUrl} alt='search-icon' />
+            }
+          </div>
             </div>
         {searchData && showDropDown && <DropDown
           className="hidden lg:block"
@@ -86,21 +87,23 @@ const Navbar = () => {
       
       {/* === MOBILE VIEW === */}
       {showMenu &&
-      <div className='lg:hidden cursor-pointer flex flex-col absolute right-2 top-24 w-full sm:w-1/3 bg-primary items-center shadow-md rounded-lg p-2 gap-2 bg-white-300/20 font-sans '>
+      <div className='z-30 lg:hidden cursor-pointer flex flex-col absolute right-2 top-24 w-full sm:w-1/3 bg-primary items-center shadow-xl rounded-lg p-2 gap-2 bg-white-300/20 font-sans'>
        { NAVBAR_ITEMS.map((item) => (
         <NavbarItem item={item} />)
         )}
-      <div className='relative'>
-          <div className="flex">
+      <div className='relative w-full'>
+          <div className="flex w-full items-center">
               <Input
+                className='rounded-xl w-full'
                 value={keyword}
                 onChange={handleKeywordChange}
-                placeholder="Enter here..."
+                placeholder="Search ..."
               />
-            <Button
-              onClick={handleSearch}
-            >{isLoading?'Loading...':'Search'}</Button>
-            </div>
+              <div className='w-10 h-10 absolute right-2 top-0'>
+            {isLoading ? <Loader className='h-full w-full'  /> : <img className='h-10 w-10' src={searchIconUrl} alt='search-icon' />
+            }
+          </div>
+          </div>
             {searchData && showDropDown && <DropDown
               className='right-0'
               listItem={searchData}
