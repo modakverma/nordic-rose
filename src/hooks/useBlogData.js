@@ -1,12 +1,19 @@
 import { useQuery } from "react-query"
 import axios from "axios"
+import { toast } from "react-toastify";
+import { PROD_URL } from "../utils/http";
 
-const fetchBlogData = (blogId) => {
-    return axios.get(`http://localhost:4000/blogs/${blogId}`)
+const onError = (error) => {
+  toast.error(error.message);
 }
 
-const useBlogData = (blogId) => {
-  return useQuery(['blog',blogId],fetchBlogData(blogId))
+export const useBlogData = (blogId) => {
+  const fetchBlogData = () => {
+    return axios.get(`${PROD_URL}/article/${blogId}`)
+  }
+  return useQuery(['blog',blogId],fetchBlogData, {
+    onError,
+  })
 }
 
 export default useBlogData
