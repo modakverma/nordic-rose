@@ -29,7 +29,12 @@ const Article = () => {
   }
 
   const { readNext,article } = data?.data;
-  console.log(data)
+  const time = new Date(article.createdAt).toDateString();
+  const getAverageReadTime = () => {
+    const articleLength = article.shortDesc.split(' ').length + article.description.split(' ').length;
+    const readTime = Math.round(articleLength / 200);
+    return readTime
+  }
 
   return (
       <div className='w-full flex flex-col items-center '>
@@ -54,7 +59,7 @@ const Article = () => {
               src={article.Author.profileImg} alt="" />
             <div>
               <h1>{article.Author.fullName}</h1>
-              <p className='font-light text-sm'>{ article.createdAt}</p>
+                <p className='font-light text-sm'>{time}{' . '}{getAverageReadTime()} min read</p>
             </div>
             </div>
             <SocialLink linkFb={article.Author.linkFb} linkTwt={article.Author.linkTwt} />
