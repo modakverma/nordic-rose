@@ -55,9 +55,9 @@ const Article = () => {
           <div className='flex flex-col sm:flex-row justify-between sm:items-center'>
           <div className='flex gap-2 font-sans py-4'>
             <img className='w-10 rounded-full'
-              src={article.Author.profileImg} alt="" />
+              src={article.Author.profileImg} alt="author-img" />
             <div>
-              <h1 className='text-xs sm:text-normal'>{article.Author.fullName}</h1>
+              <h1 className='text-md sm:text-normal'>{article.Author.fullName}</h1>
                 <p className='font-light text-xs sm:text-sm'>{time}{' . '}{getAverageReadTime()} min read</p>
             </div>
             </div>
