@@ -42,6 +42,17 @@ const Home = () => {
         navigate(`/blog/${bannerData.id}`)
     ]
 
+    const handlePaginationNext = () => {
+        if (currentPage<totalPages.length) {
+            setCurrentPage(prev=>prev+1)
+        }
+    }
+    const handlePaginationPrev = () => {
+        if (currentPage>1) {
+            setCurrentPage(prev=>prev-1)
+        }
+    }
+
     return (
         <div className='bg-primary flex flex-col items-center py-20'>
             {bannerData ? <div
@@ -64,7 +75,9 @@ const Home = () => {
             </div>
             {/* PAGINATION */}
             <div className='flex gap-5 pt-12 w-full items-center justify-center'>
-                <span className='cursor-pointer hover:scale-125 transition'>{'<< '}prev</span>
+                <span
+                    onClick={handlePaginationPrev}
+                    className='cursor-pointer hover:scale-125 transition'>{'<< '}prev</span>
                 {totalPages.map(page => (
                     <div
                         onClick={()=>handlePageChange(page)}
@@ -73,7 +86,9 @@ const Home = () => {
                             page === currentPage && 'scale-125 bg-slate-300 border border-slate-400/70'
                         ])}>{page}</div>
                 ))}
-                <span className='cursor-pointer hover:scale-125 transition'>next{' >>'}
+                <span
+                    onClick={handlePaginationNext}
+                    className='cursor-pointer hover:scale-125 transition'>next{' >>'}
                 </span>
             </div>
         </div>
