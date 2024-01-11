@@ -4,10 +4,6 @@ import { twMerge } from 'tailwind-merge'
 
 const DropDown = ({ listItem, className, setStateCallback }) => {
     const navigate = useNavigate();
-    // Hide DropDown 
-    const handleDropdownHide = () => {
-        setStateCallback(false)
-    }
     const handleNavigationToSearchItem = (item) => {
         navigate(`/blog/${item.id}`)
         setStateCallback(false)
@@ -16,7 +12,7 @@ const DropDown = ({ listItem, className, setStateCallback }) => {
       <>
       <div className='relative z-40'>
            <ul className={twMerge([
-          'border border-black font-sans text-sm bg-primary shadow-xl shadow-slate-900/30 rounde p-4 py-5 absolute w-80 h-80 overflow-auto right-0 top-2 rounded-lg',
+          'border border-black font-sans text-sm bg-primary shadow-xl shadow-slate-900/30 rounde p-4 py-5 absolute w-80 h-80 overflow-auto sm:right-0 top-2 rounded-lg',
           className
     ])}>
         {listItem.map(item => (
@@ -28,10 +24,6 @@ const DropDown = ({ listItem, className, setStateCallback }) => {
       ))}
           </ul>
             </div>
-          <div
-              onClick={handleDropdownHide}
-              className='z-10 cursor-pointer absolute top-0 left-0 right-0 bottom-0'>
-          </div>
     </>
   )
 }
