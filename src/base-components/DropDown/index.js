@@ -14,13 +14,9 @@ const DropDown = ({ listItem, className, setStateCallback }) => {
     }
     return (
       <>
-      <div className='relative z-30'>
-          <span
-              onClick={handleDropdownHide}
-              className='p-2 h-8 w-8 hidden lg:flex items-center justify-center rounded-full hover:bg-slate-300/30 cursor-pointer absolute z-10 '>&#x2715;
-          </span>
+      <div className='relative z-40'>
            <ul className={twMerge([
-          'pt-10 border border-black font-sans text-sm bg-primary shadow-lg rounde p-2 pl-4 py-5 absolute w-80 h-80 overflow-auto',
+          'border border-black font-sans text-sm bg-primary shadow-xl shadow-slate-900/30 rounde p-4 py-5 absolute w-80 h-80 overflow-auto right-0 top-2 rounded-lg',
           className
     ])}>
         {listItem.map(item => (

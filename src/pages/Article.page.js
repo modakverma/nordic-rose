@@ -22,7 +22,9 @@ const Article = () => {
   const { data, isLoading, isError, error} = useBlogData(blogId);
 
   if (isLoading) {
-    return <Loader/>
+    return <div className='w-full h-40 flex items-center justify-center'>
+    <Loader/>
+</div>
   }
   if (isError) {
     return <Error error={error}/>
@@ -79,7 +81,6 @@ const Article = () => {
             <p>{ article.description}</p>
           </div>
 
-
         <div className='flex flex-col gap-8 py-10'>
         {/* SHARE ON MEDIA */}
         <SocialLink
@@ -127,8 +128,7 @@ const Article = () => {
             <BlogCard
               className="text-sm w-full"
               blog={blog} />
-          ))
-          }
+          ))}
           </div>
         </div>
         <div className='sm:px-20'>
@@ -138,5 +138,4 @@ const Article = () => {
     </div>
   )
 }
-
 export default Article
