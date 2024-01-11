@@ -15,6 +15,7 @@ const Navbar = () => {
   const [showDropDown, setSowDropDown] = useState(false);
   const [keyword,setKeyword] = useState('')
   const handleMenuToggle = () => {
+    setSowDropDown(false)
     setShowMenu(prev => !prev);
   }
   const subUrl = `/search?keyword=${keyword}`
@@ -45,29 +46,37 @@ const Navbar = () => {
     setSowDropDown(toggle)
   }
 
+  const handleDropdownHide = () => {
+    setSowDropDown(false)
+  }
+
   const handleClearSearch = () => {
     setKeyword('')
   }
 
   return (
-    <div className="flex gap-4 w-full items-center justify-between px-2 sm:px-10 border-b h-24">
-      <Logo
-        className='w-40 sm:w-64 md:w-80'
-        dest="navbar" />
+    <>
+      {showDropDown && keyword.length>0 ?<div
+      onClick={handleDropdownHide}
+      className='z-90 cursor-pointer absolute top-0 left-0 right-0 bottom-0'>
+      </div>
+      : null}
+    <div className="sticky top-0 z-50 sm:relative bg-primary flex gap-4 w-full items-center justify-between px-2 sm:px-10 border-b h-16 sm:h-24">
+      <Logo className='w-52 sm:w-64 md:w-80' dest="navbar" />
 
       {/*=== SERRCH BAR ===*/}
-      <div className=''>
-          <div className="relative flex items-center jusitfy-center">
+      <div className='absolute -bottom-11 sm:relative sm:top-0 '>
+          <div className=" flex items-center jusitfy-center">
           <Input
-                className='rounded-xl w-full text-xs sm:text-base'
+                className='rounded-xl w-full text-sm sm:text-base'
                 value={keyword}
                 onChange={handleKeywordChange}
                 placeholder="Search ..."
           />
-          <div className='w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center absolute right-0 lg:-left-10 top-0'>
+          <div className='w-10 h-10 flex items-center justify-center absolute right-0 lg:-left-10 top-0'>
             {isLoading ? <Loader className='w-6 h-6'/> : keyword.length>0 ?<span
               onClick={handleClearSearch}
-              className='h-full w-full flex items-center justify-center rounded-full hover:bg-slate-300/30 cursor-pointer text-xl'>&#x2715;
+              className='h-full w-full flex items-center justify-center rounded-full hover:bg-slate-300/20 cursor-pointer text-xl'>&#x2715;
           </span>:<img className='p-2 w-full h-full' src={searchIconUrl} alt='search-icon' />
             }
           </div>
@@ -98,7 +107,8 @@ const Navbar = () => {
         )}
       </div>
       }
-    </div>
+      </div>
+      </>
   )
 }
 export default Navbar
