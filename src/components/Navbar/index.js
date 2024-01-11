@@ -27,8 +27,6 @@ const Navbar = () => {
       id:' ',
       title: 'nothing to show...'
     }]
-    console.log(isError)
-    console.log(isLoading)
   }
 
   useEffect(() => {
@@ -44,32 +42,38 @@ const Navbar = () => {
   }
 
   const setStateCallback = (toggle) => {
-    console.log(toggle)
     setSowDropDown(toggle)
   }
 
+  const handleClearSearch = () => {
+    setKeyword('')
+  }
+
   return (
-    <div className="flex gap-4 w-full items-center justify-between px-4 sm:px-10 border-b h-24">
+    <div className="flex gap-4 w-full items-center justify-between px-2 sm:px-10 border-b h-24">
       <Logo
-        className='w-52 sm:w-60 md:w-80'
+        className='w-40 sm:w-64 md:w-80'
         dest="navbar" />
 
       {/*=== SERRCH BAR ===*/}
       <div className=''>
-          <div className="relative hidden lg:flex">
+          <div className="relative flex items-center jusitfy-center">
           <Input
-                className='rounded-xl w-full'
+                className='rounded-xl w-full text-xs sm:text-base'
                 value={keyword}
                 onChange={handleKeywordChange}
                 placeholder="Search ..."
           />
-          <div className='w-10 h-10 absolute -left-12 -top-0'>
-            {isLoading ? <Loader className='w-full h-full'  /> : <img className='w-full h-full' src={searchIconUrl} alt='search-icon' />
+          <div className='w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center absolute right-0 lg:-left-10 top-0'>
+            {isLoading ? <Loader className='w-6 h-6'/> : keyword.length>0 ?<span
+              onClick={handleClearSearch}
+              className='h-full w-full flex items-center justify-center rounded-full hover:bg-slate-300/30 cursor-pointer text-xl'>&#x2715;
+          </span>:<img className='p-2 w-full h-full' src={searchIconUrl} alt='search-icon' />
             }
           </div>
-            </div>
+          </div>
         {searchData && showDropDown && <DropDown
-          className="hidden lg:block"
+          className="block "
           listItem={searchData}
           setStateCallback={setStateCallback}
         />}
@@ -77,43 +81,24 @@ const Navbar = () => {
 
       <div className='hidden lg:flex gap-5'>
         {NAVBAR_ITEMS.map((item) => (
-          <NavbarItem item={item} />)
+          <NavbarItem
+            item={item} />)
         )}
       </div>
+      
+      {/* === MOBILE VIEW === */}
         <img
           onClick={handleMenuToggle}
           className="lg:hidden w-14 p-2 cursor-pointer hover:bg-slate-300/20 transition rounded-lg"
         src={hamburgerIcon} alt="hamburger-icon-url" />
-      
-      {/* === MOBILE VIEW === */}
       {showMenu &&
-      <div className='z-30 lg:hidden cursor-pointer flex flex-col absolute right-2 top-24 w-full sm:w-1/3 bg-primary items-center shadow-xl rounded-lg p-2 gap-2 bg-white-300/20 font-sans'>
+      <div className='border z-30 lg:hidden cursor-pointer flex flex-col absolute right-2 top-24 w-full sm:w-1/3 bg-primary items-center shadow-xl rounded-lg p-2 gap-2 bg-white-300/20 font-sans'>
        { NAVBAR_ITEMS.map((item) => (
-        <NavbarItem item={item} />)
+        <NavbarItem onClick={()=>setShowMenu(false)} item={item} />)
         )}
-      <div className='relative w-full'>
-          <div className="flex w-full items-center">
-              <Input
-                className='rounded-xl w-full'
-                value={keyword}
-                onChange={handleKeywordChange}
-                placeholder="Search ..."
-              />
-              <div className='w-10 h-10 absolute right-2 top-0'>
-            {isLoading ? <Loader className='h-full w-full'  /> : <img className='h-10 w-10' src={searchIconUrl} alt='search-icon' />
-            }
-          </div>
-          </div>
-            {searchData && showDropDown && <DropDown
-              className='right-0'
-              listItem={searchData}
-              setStateCallback={setStateCallback}
-            />}
-      </div>
       </div>
       }
     </div>
   )
 }
-
 export default Navbar
