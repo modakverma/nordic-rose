@@ -12,7 +12,7 @@ const DropDown = ({ listItem, className, setStateCallback }) => {
       <>
       <div className='relative z-40'>
            <ul className={twMerge([
-          'border border-black font-sans text-sm bg-primary shadow-xl shadow-slate-900/30 rounde p-4 py-5 absolute w-80 h-80 overflow-auto sm:right-0 top-2 rounded-lg',
+          'border border-black font-sans font-extralight text-sm sm:font-normal bg-primary shadow-xl shadow-slate-900/30 rounde sm:p-4 sm:py-5 absolute w-52 h-52 sm:w-80 sm:h-80 overflow-auto sm:right-0 top-2 rounded-lg',
           className
     ])}>
         {listItem.map(item => (
@@ -22,8 +22,8 @@ const DropDown = ({ listItem, className, setStateCallback }) => {
                 key={item.id} className='cursor-pointer rounded-lg h-20 px-4 py-2 hover:bg-slate-300/30 transition border-b border-slate-200/50 flex items-center'>{item.title}
             </li>
       ))}
-          </ul>
-            </div>
+      </ul>
+      </div>
     </>
   )
 }

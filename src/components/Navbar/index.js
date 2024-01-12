@@ -101,7 +101,7 @@ const Navbar = () => {
           className="lg:hidden w-14 p-2 cursor-pointer hover:bg-slate-300/20 transition rounded-lg"
         src={hamburgerIcon} alt="hamburger-icon-url" />
       {showMenu &&
-      <div className='border z-30 lg:hidden cursor-pointer flex flex-col absolute right-2 top-24 w-full sm:w-1/3 bg-primary items-center shadow-xl rounded-lg p-2 gap-2 bg-white-300/20 font-sans'>
+      <div className='border z-30 lg:hidden cursor-pointer flex flex-col absolute right-0 sm:right-2 top-16 sm:top-24 w-1/3 bg-primary items-center shadow-xl rounded-lg p-2 gap-2 bg-white-300/20 font-sans'>
        { NAVBAR_ITEMS.map((item) => (
         <NavbarItem onClick={()=>setShowMenu(false)} item={item} />)
         )}
