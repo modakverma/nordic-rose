@@ -30,11 +30,12 @@ const NewsletterSignup = () => {
         setEmail(event.target.value)
     }
 return (
-<div className='border border-t-8 text-center border-black p-5 flex flex-col gap-4 items-center w-full'>
+<div className='border border-t-8 text-center border-black px-10 py-10 flex flex-col gap-4 items-center w-full'>
         <h1 className='font-black text-2xl'>Sign up for the newsletter</h1>
-        <p className='text-sm font-sans font-light'>If you want relevant updates occasionally, sign up for the private newsletter. Your email is never shared. </p>
-            <form onSubmit={handleSignup} className='flex'>
+        <p className='text-lg font-sans font-light'>If you want relevant updates occasionally, sign up for the private newsletter. Your email is never shared. </p>
+            <form onSubmit={handleSignup} className='flex w-full'>
             <Input
+            className='w-full'
             value={email}
             onChange={handleEmailChange}
             placeholder="Enter your email..."

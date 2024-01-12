@@ -13,7 +13,7 @@ const BlogCard = ({ blog,className }) => {
         'text-xl font-sans group flex w-full h-full flex-col gap-2 cursor-pointer hover:bg-slate-300/15  transition p-3 rounded-xl',
         className
       ])}>
-      <div className='relative w-full h-48 transition overflow-hidden'>
+      <div className='relative w-full h-52 transition overflow-hidden'>
       <img
       className='w-full h-full absolute group-hover:scale-125 transition group-hover:translate-x-4 group-hover:translate-y-4'
       src={blog.bannerImg} alt="blog-article-card-img" />

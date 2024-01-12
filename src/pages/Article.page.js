@@ -131,7 +131,7 @@ const Article = () => {
           ))}
           </div>
         </div>
-        <div className='sm:px-20'>
+        <div className='sm:w-[30rem]'>
         <NewsletterSignup/>
         </div>
       </div>
