@@ -19,7 +19,7 @@ const Navbar = () => {
     setShowMenu(prev => !prev);
   }
   const subUrl = `/search?keyword=${keyword}`
-  const {data,isLoading,isError,refetch} = useSearchData(PROD_URL+subUrl,`search${keyword}`)
+  const {data,isLoading,isFetching,isError,refetch} = useSearchData(PROD_URL+subUrl,`search${keyword}`)
 
   let searchData = data?.data;
 
@@ -30,16 +30,13 @@ const Navbar = () => {
     }]
   }
 
-  useEffect(() => {
+  const handleKeywordChange = (event) => {
+    setKeyword(event.target.value)
     if (keyword==='') {
       return;
     }
     refetch();
     setSowDropDown(true)
-  },[keyword])
-
-  const handleKeywordChange = (event) => {
-    setKeyword(event.target.value)
   }
 
   const setStateCallback = (toggle) => {
@@ -74,7 +71,7 @@ const Navbar = () => {
                 placeholder="Search ..."
           />
           <div className='w-10 h-10 flex items-center justify-center absolute right-0 lg:-left-10 top-0'>
-            {isLoading ? <Loader className='w-6 h-6'/> : keyword.length>0 ?<span
+            {isLoading || isFetching ? <Loader className='w-6 h-6'/> : keyword.length>0 ?<span
               onClick={handleClearSearch}
               className='h-full w-full flex items-center justify-center rounded-full hover:bg-slate-300/20 cursor-pointer text-xl'>&#x2715;
           </span>:<img className='p-2 w-full h-full' src={searchIconUrl} alt='search-icon' />
