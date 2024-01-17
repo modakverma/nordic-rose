@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{useState} from 'react'
 import { NAVBAR_ITEMS } from '../../models/NavbarModel'
 import NavbarItem from './NavbarItem';
 import Logo from '../Logo';
@@ -31,12 +31,13 @@ const Navbar = () => {
   }
 
   const handleKeywordChange = (event) => {
-    setKeyword(event.target.value)
+    console.log(showDropDown, keyword.length)
+    setSowDropDown(true);
+    setKeyword(event.target.value);
     if (keyword==='') {
       return;
     }
     refetch();
-    setSowDropDown(true)
   }
 
   const setStateCallback = (toggle) => {

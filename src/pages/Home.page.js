@@ -6,12 +6,14 @@ import Error from '../components/Error';
 import { PROD_URL } from '../utils/http';
 import { twMerge } from 'tailwind-merge';
 import { useNavigate } from 'react-router-dom';
+import { RESPONSIVE_WIDTH } from '../utils/constants';
 
 const Home = () => {
     const navigate = useNavigate()
-    const perPage = 6;
+    const [perPage,setPerPage] = useState(12);
     const [currentPage, setCurrentPage] = useState(1);
     const [bannerData, setBannerData] = useState(null);
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const subUrl = `/home?perPage=${perPage}&pageNo=${currentPage}&currentBanner=${bannerData?.id}`;
     const { isLoading, data, isError, error, refetch } = useFetchData(PROD_URL + subUrl, 'home')
     
@@ -20,6 +22,24 @@ const Home = () => {
             setBannerData(data.data.banner)
         }
     }, [data]);
+
+    // useEffect(() => {
+    //     if (screenWidth < RESPONSIVE_WIDTH) {
+    //         setPerPage(6);
+    //         refetch()
+    //     }
+    //     else {
+    //         setPerPage(12)
+    //         refetch()
+    //     }
+    //       const handleResize = () => {
+    //         setScreenWidth(window.innerWidth);
+    //       };
+    //       window.addEventListener('resize', handleResize);
+    //       return () => {
+    //       window.removeEventListener('resize', handleResize);
+    //       };
+    // },[])
     
     useEffect(() => {
         refetch();
@@ -59,7 +79,7 @@ const Home = () => {
         <div className='bg-primary flex flex-col items-center py-20'>
             {bannerData ? <div
                 onClick={handleBannerBlogNavigate}
-                className='sm:px-6 lg:px-32 xl:px-80 flex hover:opacity-85 transition cursor-pointer w-full justify-center flex-col gap-5 pb-8 items-center'>
+                className='sm:px-6 lg:px-32 xl:px-72 flex hover:opacity-85 transition cursor-pointer w-full justify-center flex-col gap-5 pb-8 items-center'>
                 <img src={bannerData.bannerImg}
                     className='h-full w-full'
                     alt="bannerImg"
@@ -67,9 +87,9 @@ const Home = () => {
                 <h1 className='px-6 font-black text-5xl text-center'>{bannerData.title}</h1>
                 <p className='w-3/5 text-center font-sans font-light text-xl tracking-wide'>{ bannerData.subtitle}</p>
             </div>:null}
-            <div className='border-t-[1.8px] lg:w-desktopWidth pt-10 border-black flex items-center justify-center flex-col'>
+            <div className='lg:w-auto pt-10 border-black flex items-center justify-center flex-col'>
             <h1 className='font-black text-3xl pb-5'>All Articles</h1>
-            <div className='font-sans w-full grid grid-cols-1 sm:grid-cols-2 gap-y-4 sm:px-10'>
+            <div className='font-sans w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:px-10'>
             {blogs?.map(blog => (
                 <BlogCard key={blog.id} blog={blog}  />
             ))}

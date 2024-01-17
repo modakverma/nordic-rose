@@ -11,6 +11,9 @@ const SocialLink = ({
     TwtText,
     WaText,
 }) => {
+    if (!linkWa && !linkFb && !linkTwt ) {
+        return null;
+    }
   return (
     <div className={twMerge([
         'flex rounded-md shadow overflow-hidden border h-10 font-sans text-nowrap  sm:text-sm font-medium',
@@ -39,17 +42,17 @@ const SocialLink = ({
             </a>
             :null
         }
-        {linkWa ?
+        {linkWa &&
             <a
             target='blank'
-            href={`https://${linkWa}`}
+            href={`https://wa.me/91${linkWa}`}
             className='sm:hidden w-full flex gap-2 justify-center  items-center py-2 px-4 border-x hover:bg-slate-300/20 transition'
         >
                 <img
                     className='h-2/3'
                     src={SOCIAL_LINKS.linkWa} alt="whatsapp" />
                 <h1 className='hidden sm:block'>{WaText}</h1></a>
-            :null
+            
         }
     </div>
   )
