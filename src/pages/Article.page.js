@@ -86,9 +86,9 @@ const Article = () => {
           <div className='flex flex-col gap-8 py-6 items-center'>
             <p>{article.shortDesc}</p>
             <h1 className='font-bold text-xl font-sans flex-start w-full'>{article.subheading}</h1>
-            <div className='text-center font-sans text-sm lg:text-lg font-medium  sm:w-[120%]'>
+            <div className='text-center font-sans text-sm lg:text-md font-medium sm:w-[110%]'>
               <img className='w-full' src={article.contentImg} alt="cotent-img" />
-              <p className='sm:px-20'>{ article.contentImgDesc}</p>
+              <p className='sm:px-20 mt-2'>{article.contentImgDesc}</p>
             </div>
             <p>{ article.description}</p>
           </div>
