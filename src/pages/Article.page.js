@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import NewsletterSignup from '../components/NewsletterSignup';
 import Loader from '../components/Loader';
@@ -8,19 +8,31 @@ import Anchor from '../base-components/Anchor/index'
 import SocialLink from '../components/SocialLink';
 import eyesUrl from '../assets/eyes.svg'
 import useBlogData from '../hooks/useBlogData';
+import { RESPONSIVE_WIDTH } from '../utils/constants';
 
 const Article = () => {
-  // SCROLL TO TOP Fn
-  (function () {
-    window.scrollTo({
-      top: 0,
-    });
-  })()
-
   const { blogId } = useParams();
-
-  const { data, isLoading, isError, error} = useBlogData(blogId);
-
+  const [perPage, setPerPage] = useState(6);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  // FETCHING DATA
+  const { data, isLoading, isError, error,refetch} = useBlogData(blogId,perPage);
+  useEffect(() => {
+    if (screenWidth < RESPONSIVE_WIDTH) {
+      setPerPage(3);
+      refetch()
+    }
+    else {
+      setPerPage(6)
+      refetch()
+    }
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+    window.removeEventListener('resize', handleResize);
+    };
+  },[screenWidth])
   if (isLoading) {
     return <div className='w-full h-40 flex items-center justify-center'>
     <Loader/>
@@ -63,12 +75,12 @@ const Article = () => {
                 <p className='font-light text-xs sm:text-sm'>{time}{' . '}{getAverageReadTime()} min read</p>
             </div>
             </div>
-            <SocialLink
-              className='w-full sm:w-auto'
-              linkFb={article.Author.linkFb}
-              linkTwt={article.Author.linkTwt}
-              linkWa={article.Author.linkWa}
-            />
+          <SocialLink
+            className='w-full sm:w-auto'
+            linkFb={article.Author.linkFb}
+            linkTwt={article.Author.linkTwt}
+            linkWa={RESPONSIVE_WIDTH>screenWidth ? article.Author.linkWa: null}
+          />
           </div>
 
           <div className='flex flex-col gap-8 py-6 items-center'>
@@ -119,15 +131,13 @@ const Article = () => {
       </div>
 
       {/* READ NEXT SECTION */}
-      <div className='relative w-full flex flex-col items-center sm:px-10 md:px-40 lg:px-52 py-10 border-t-[1.5px] border-black'>
+      <div className='relative w-full flex flex-col items-center py-10 border-t-[1.5px] border-black'>
         <img src={eyesUrl} alt="eyesImg" className='absolute -top-8' />
-        <div className='flex flex-col items-center py-16'>
+        <div className='flex flex-col items-center py-16 w-auto'>
           <h1 className='font-black text-3xl'>What to read next</h1>
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
+          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3'>
           {readNext.map(blog => (
-            <BlogCard
-              className="text-sm w-full"
-              blog={blog} />
+            <BlogCard blog={blog} />
           ))}
           </div>
         </div>

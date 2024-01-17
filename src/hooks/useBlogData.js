@@ -7,9 +7,9 @@ const onError = (error) => {
   toast.error(error.message);
 }
 
-export const useBlogData = (blogId) => {
+export const useBlogData = (blogId,perPage) => {
   const fetchBlogData = () => {
-    return axios.get(`${PROD_URL}/article/${blogId}`)
+    return axios.get(`${PROD_URL}/article/${blogId}?perPage=${perPage}`)
   }
   return useQuery(['blog',blogId],fetchBlogData, {
     onError,

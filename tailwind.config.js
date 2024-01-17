@@ -18,6 +18,9 @@ module.exports = {
       },
       width: {
         desktopWidth: "45rem",
+        cardWidth: "350px",
+        smallCardWidth: "310px",
+        smallCardHeight: "310px",
       },
       keyframes: {
         marquee:{
