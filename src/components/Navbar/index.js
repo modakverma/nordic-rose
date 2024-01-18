@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { NAVBAR_ITEMS } from '../../models/NavbarModel'
 import NavbarItem from './NavbarItem';
 import Logo from '../Logo';
@@ -30,6 +30,14 @@ const Navbar = () => {
       title: 'nothing to show...'
     }]
   }
+
+  useEffect(() => {
+    if (keyword==='') {
+      return;
+    }
+    refetch();
+    setSowDropDown(true)
+  },[keyword])
 
   const handleKeywordChange = (event) => {
     console.log(showDropDown, keyword.length)
