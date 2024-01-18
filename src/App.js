@@ -8,7 +8,7 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="font-new-york">
+    <div className="font-new-york2">
       <QueryClientProvider client={queryClient}>
         <PagesRouter />
        <ReactQueryDevtools initialIsOpen={false} position='bottom-right'/>

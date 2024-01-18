@@ -16,12 +16,12 @@ const Marquee = () => {
 
   return (
     <div className="flex items-end gap-8 overflow-x-auto w-auto">
-      <div className=" animate-marquee w-full whitespace-nowrap flex items-end font-sans gap-4 justify-around">
+      <div className="animate-marquee w-full whitespace-nowrap flex items-end font-sans gap-4 justify-around">
           {data?.data.map((tag,index) => (
             <span
               key={tag.id}
               className={twMerge([
-                  "flex-1 uppercase text-white w-full text-2xl",
+                  "flex-1 uppercase text-white w-full text-xl",
                   index%2===0 ? "font-bold" : "font-extralight"
               ])}>{ tag.title }</span>
       ))}
@@ -31,7 +31,7 @@ const Marquee = () => {
             <span
               key={tag.id}
               className={twMerge([
-                  "flex-1 uppercase text-white w-full text-2xl",
+                  "flex-1 uppercase text-white w-full text-xl",
                   index%2===0 ? "font-bold" : "font-extralight"
               ])}>{ tag.title }</span>
       ))}

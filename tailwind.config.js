@@ -7,6 +7,8 @@ module.exports = {
     extend:{
       fontFamily: {
         'new-york':['New York'],
+        'new-york2':['DM Serif Display', 'serif'],
+        'new-york3':['Cormorant Garamond', 'serif']
       },
       colors: {
         primary: "#FFF",
