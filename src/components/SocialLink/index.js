@@ -16,16 +16,16 @@ const SocialLink = ({
     }
   return (
     <div className={twMerge([
-        'flex rounded-md shadow overflow-hidden border h-10 font-sans text-nowrap  sm:text-sm font-medium',
+        'flex rounded-md shadow-slate-200/40 overflow-hidden border h-14 font-sans text-nowrap sm:text-sm font-medium',
         className
     ])}>
         {linkFb ?
             <a
             target='blank'
             href={`https://facebook.com/${linkFb}`}
-            className='w-full flex gap-2 justify-center  items-center py-2 px-4 border-x hover:bg-slate-300/20 transition'
+            className='w-full flex gap-4 justify-center  items-center py-2 px-4 border-x hover:bg-slate-300/20 transition'
         >
-                <img className='h-2/3' src={SOCIAL_LINKS.linkFb} alt="facebook" />
+                <img className='h-3/5 sm:h-1/2' src={SOCIAL_LINKS.linkFb} alt="facebook" />
             <h1 className='hidden sm:block'>{FbText}</h1>
             </a> : null
         }
@@ -33,10 +33,10 @@ const SocialLink = ({
             <a
             target='blank'
             href={`https://twitter.com/${linkTwt}`}
-            className='w-full flex gap-2 justify-center  items-center py-2 px-4 border-x hover:bg-slate-300/20 transition'
+            className='w-full flex gap-4 justify-center  items-center py-2 px-4 border-x hover:bg-slate-300/20 transition'
         >
                 <img
-                className='h-2/3'
+                className='h-3/5 sm:h-1/2'
                     src={SOCIAL_LINKS.linkTwt} alt="twitter" />
                 <h1 className='hidden sm:block'>{TwtText}</h1>
             </a>
@@ -46,10 +46,10 @@ const SocialLink = ({
             <a
             target='blank'
             href={`https://wa.me/91${linkWa}`}
-            className='sm:hidden w-full flex gap-2 justify-center  items-center py-2 px-4 border-x hover:bg-slate-300/20 transition'
+            className='sm:hidden w-full flex gap-4 justify-center  items-center py-2 px-4 border-x hover:bg-slate-300/20 transition'
         >
                 <img
-                    className='h-2/3'
+                    className='h-3/5 sm:h-1/2'
                     src={SOCIAL_LINKS.linkWa} alt="whatsapp" />
                 <h1 className='hidden sm:block'>{WaText}</h1></a>
             

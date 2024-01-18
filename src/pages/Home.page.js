@@ -15,6 +15,8 @@ const Home = () => {
     const [bannerData, setBannerData] = useState(null);
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const subUrl = `/home?perPage=${perPage}&pageNo=${currentPage}&currentBanner=${bannerData?.id}`;
+
+    // FETCHING HOME PAGE DATA 
     const { isLoading, data, isError, error, refetch } = useFetchData(PROD_URL + subUrl, 'home')
     
     useEffect(() => {
@@ -77,18 +79,20 @@ const Home = () => {
 
     return (
         <div className='bg-primary flex flex-col items-center py-20'>
-            {bannerData ? <div
-                onClick={handleBannerBlogNavigate}
-                className='sm:px-6 lg:px-32 xl:px-72 flex hover:opacity-85 transition cursor-pointer w-full justify-center flex-col gap-5 pb-8 items-center'>
-                <img src={bannerData.bannerImg}
-                    className='h-full w-full'
+            {bannerData ? <div className='sm:px-6 lg:px-32 xl:px-72 flex w-full justify-center flex-col gap-8 pb-10 items-center'>
+                <img
+                    onClick={handleBannerBlogNavigate}
+                    src={bannerData.bannerImg}
+                    className='hover:opacity-85 transition cursor-pointer h-full w-full'
                     alt="bannerImg"
                 />
-                <h1 className='px-6 font-black text-5xl text-center'>{bannerData.title}</h1>
+                <h1 className='px-6 leading-tight font-semibold text-5xl text-center'>{bannerData.title}</h1>
                 <p className='w-3/5 text-center font-sans font-light text-xl tracking-wide'>{ bannerData.subtitle}</p>
-            </div>:null}
-            <div className='lg:w-auto pt-10 border-black flex items-center justify-center flex-col'>
-            <h1 className='font-black text-3xl pb-5'>All Articles</h1>
+            </div> : null}
+            
+            {/* === ARTICLES SECTION === */}
+            <div className='lg:w-auto pt-16 border-t-2 border-black flex items-center justify-center flex-col'>
+            <h1 className='font-black text-4xl pb-8'>All Articles</h1>
             <div className='font-sans w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:px-10'>
             {blogs?.map(blog => (
                 <BlogCard key={blog.id} blog={blog}  />
@@ -96,7 +100,7 @@ const Home = () => {
             </div>
             </div>
             {/* PAGINATION */}
-            <div className='flex gap-5 pt-12 w-full items-center justify-center'>
+            <div className='flex font-sans gap-5 pt-12 w-full items-center justify-center'>
                 {currentPage>1 ?<span
                     onClick={handlePaginationPrev}
                     className='cursor-pointer hover:scale-125 transition'>{'<< '}prev</span> :
@@ -106,8 +110,8 @@ const Home = () => {
                     <div
                         onClick={()=>handlePageChange(page)}
                         className={twMerge([
-                            'rounded w-6 h-6 bg-slate-200 flex items-center justify-center cursor-pointer hover:scale-125 hover:bg-slate-300 transition',
-                            page === currentPage && 'scale-125 bg-slate-300 border border-slate-400/70'
+                            'rounded w-6 h-6 text-slate-800 bg-slate-200 flex items-center justify-center cursor-pointer hover:scale-125 hover:bg-slate-300 transition',
+                            page === currentPage && 'scale-110 bg-slate-300 border border-slate-400/10 shadow'
                         ])}>{page}</div>
                 ))}
                 {currentPage<totalPages.length?<span

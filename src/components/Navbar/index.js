@@ -13,7 +13,8 @@ import searchIconUrl from '../../assets/search.svg'
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showDropDown, setSowDropDown] = useState(false);
-  const [keyword,setKeyword] = useState('')
+  const [keyword, setKeyword] = useState('')
+  const [showSearchInput, setShowSearchInput] = useState(false);
   const handleMenuToggle = () => {
     setSowDropDown(false)
     setShowMenu(prev => !prev);
@@ -56,37 +57,38 @@ const Navbar = () => {
     <>
       {showDropDown && keyword.length>0 ?<div
       onClick={handleDropdownHide}
-      className='z-90 cursor-pointer absolute top-0 left-0 right-0 bottom-0'>
+        className='z-90 cursor-pointer absolute top-0 left-0 right-0 bottom-0'>
       </div>
       : null}
-    <div className="sticky top-0 z-50 sm:relative bg-primary flex gap-4 w-full items-center justify-between px-2 sm:px-10 border-b h-16 sm:h-24">
-      <Logo className='w-52 sm:w-64 md:w-80' dest="navbar" />
+    <div className="sticky top-0 z-50 sm:relative bg-primary flex gap-4 w-full items-center justify-between px-2 sm:px-10 border-b h-20 sm:h-32 ">
+      <Logo className='w-32 sm:w-64 md:w-96' dest="navbar" />
 
       {/*=== SERRCH BAR ===*/}
-      <div className='absolute -bottom-11 sm:relative sm:top-0 '>
+        <div className='flex items-center gap-2 sm:gap-10 h-full'>
+        <div className='relative'>
           <div className=" flex items-center jusitfy-center">
           <Input
-                className='rounded-xl w-full text-sm sm:text-base'
-                value={keyword}
-                onChange={handleKeywordChange}
-                placeholder="Search ..."
-          />
-          <div className='w-10 h-10 flex items-center justify-center absolute right-0 lg:-left-10 top-0'>
+              className='rounded-2xl border-slate-300 focus:shadow focus:border-slate-400 h-10 flex items-center transition w-full lg:w-80 text-sm sm:text-base'
+              value={keyword}
+              onChange={handleKeywordChange}
+              placeholder="Search ..."
+          />   
+          {/* LOADER / CROSS / SEARCH ICONS */}
+          <div className='w-10 h-10 flex items-center justify-center absolute right-0 top-0'>
             {isLoading || isFetching ? <Loader className='w-6 h-6'/> : keyword.length>0 ?<span
               onClick={handleClearSearch}
               className='h-full w-full flex items-center justify-center rounded-full hover:bg-slate-300/20 cursor-pointer text-xl'>&#x2715;
-          </span>:<img className='p-2 w-full h-full' src={searchIconUrl} alt='search-icon' />
+              </span> : <img className='p-2 w-full h-full' src={searchIconUrl} alt='search-icon' />
             }
-          </div>
-          </div>
+            </div>
+        </div>
         {searchData && showDropDown && <DropDown
           className="block "
           listItem={searchData}
           setStateCallback={setStateCallback}
         />}
-      </div>
-
-      <div className='hidden lg:flex gap-5'>
+        </div>
+      <div className='hidden lg:flex gap-5 h-full'>
         {NAVBAR_ITEMS.map((item) => (
           <NavbarItem
             item={item} />)
@@ -96,10 +98,11 @@ const Navbar = () => {
       {/* === MOBILE VIEW === */}
         <img
           onClick={handleMenuToggle}
-          className="lg:hidden w-14 p-2 cursor-pointer hover:bg-slate-300/20 transition rounded-lg"
-        src={hamburgerIcon} alt="hamburger-icon-url" />
+          className="lg:hidden w-12 sm:w-14 p-2 cursor-pointer hover:bg-slate-300/20 transition rounded-lg"
+            src={hamburgerIcon} alt="hamburger-icon-url" />
+      </div>
       {showMenu &&
-      <div className='border z-30 lg:hidden cursor-pointer flex flex-col absolute right-0 sm:right-2 top-16 sm:top-24 w-1/3 bg-primary items-center shadow-xl rounded-lg p-2 gap-2 bg-white-300/20 font-sans'>
+      <div className='border z-30 lg:hidden cursor-pointer flex flex-col absolute right-0 sm:right-2 top-20 sm:top-32 w-1/3 bg-primary items-center shadow-xl rounded-lg p-2 gap-2 bg-white-300/20 font-sans'>
        { NAVBAR_ITEMS.map((item) => (
         <NavbarItem onClick={()=>setShowMenu(false)} item={item} />)
         )}
