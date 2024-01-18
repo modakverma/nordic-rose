@@ -4,7 +4,6 @@ import NewsletterSignup from '../components/NewsletterSignup';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
 import BlogCard from '../components/BlogCard';
-import Anchor from '../base-components/Anchor/index'
 import SocialLink from '../components/SocialLink';
 import eyesUrl from '../assets/eyes.svg'
 import useBlogData from '../hooks/useBlogData';
@@ -32,7 +31,7 @@ const Article = () => {
     return () => {
     window.removeEventListener('resize', handleResize);
     };
-  },[screenWidth])
+  },[])
   if (isLoading) {
     return <div className='w-full h-40 flex items-center justify-center'>
     <Loader/>
@@ -53,7 +52,7 @@ const Article = () => {
   return (
       <div className='w-full flex flex-col items-center '>
       <div className='w-full flex flex-col items-center text-center'>
-        <div className=' md:w-2/3 px-5 sm:px-10 py-14 flex flex-col gap-8'>
+        <div className=' md:w-2/3 px-5 sm:px-10 py-5 sm:py-10 flex flex-col gap-8'>
           <h1 className='font-black leading-snug text-5xl'>{article.title}</h1>
           <p className='px-10 leading-normal font-sans text-2xl tracking-widest font-light'>{ article.subtitle}</p>
         </div>
@@ -83,7 +82,7 @@ const Article = () => {
           />
           </div>
 
-          <div className='flex flex-col gap-10 py-6 items-center leading-relaxed tracking-widest font-new-york3 font-black text-2xl'>
+          <div className='flex flex-col gap-8 sm:gap-10 py-6 items-center sm:leading-relaxed tracking-widest font-new-york3 font-black text-xl sm:text-2xl'>
             <p className='pb-5'>{article.shortDesc}</p>
             <h1 className='font-bold text-3xl font-sans flex-start w-full'>{article.subheading}</h1>
             <div className='text-center font-sans text-base font-medium sm:w-[110%]'>

@@ -4,7 +4,8 @@ import { twMerge } from 'tailwind-merge'
 
 const DropDown = ({ listItem, className, setStateCallback }) => {
     const navigate = useNavigate();
-    const handleNavigationToSearchItem = (item) => {
+  const handleNavigationToSearchItem = (item) => {
+        if (item.id === null) return;
         navigate(`/blog/${item.id}`)
         setStateCallback(false)
     }

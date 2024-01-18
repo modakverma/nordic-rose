@@ -7,23 +7,35 @@ import { PROD_URL } from '../../utils/http'
 import { isEmailValid } from '../../utils/common'
 
 const NewsletterSignup = () => {
-    const [email,setEmail] = useState(null)
+    const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false);
     const handleSignup = async (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
         try {
+            if (email === '') {
+                toast.warn("Please enter an email !");
+                return;
+            }
             if (isEmailValid(email)) {
+                setLoading(true)
                 const subUrl = '/subscribe';
                 const response = await axios.post(PROD_URL+subUrl,{
                 email
                 })
-                toast.success(response.data)
+                setEmail('');
+                setLoading(false);
+                toast.success(response.data);
             } else {
-                toast.warn("Invalid email...")
+                toast.warn("Invalid email...");;
+                setLoading(false);
+                setEmail('');
                 return;
             }
         }
         catch (err) {
-            toast.error(err.response.data)
+            toast.error(err.response.data);
+            setLoading(false);
+            setEmail('');
         }
     }
     const handleEmailChange = (event) => {
@@ -42,7 +54,7 @@ return (
             />
             <Button
             type="submit"
-            >sign up</Button>
+            >{loading ?'loading...':'sign up'}</Button>
         </form>
     </div>
 )
