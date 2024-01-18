@@ -14,7 +14,6 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showDropDown, setSowDropDown] = useState(false);
   const [keyword, setKeyword] = useState('')
-  const [showSearchInput, setShowSearchInput] = useState(false);
   const handleMenuToggle = () => {
     setSowDropDown(false)
     setShowMenu(prev => !prev);
@@ -26,7 +25,7 @@ const Navbar = () => {
 
   if (isError) {
     searchData = [{
-      id:' ',
+      id:null,
       title: 'nothing to show...'
     }]
   }
@@ -69,7 +68,7 @@ const Navbar = () => {
       </div>
       : null}
     <div className="sticky top-0 z-50 sm:relative bg-primary flex gap-4 w-full items-center justify-between px-2 sm:px-10 border-b h-20 sm:h-32 ">
-      <Logo className='w-32 sm:w-64 md:w-96' dest="navbar" />
+      <Logo className='w-32 h-full sm:w-64 md:w-96' dest="navbar" />
 
       {/*=== SERRCH BAR ===*/}
         <div className='flex items-center gap-2 sm:gap-10 h-full'>

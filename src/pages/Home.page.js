@@ -25,23 +25,23 @@ const Home = () => {
         }
     }, [data]);
 
-    // useEffect(() => {
-    //     if (screenWidth < RESPONSIVE_WIDTH) {
-    //         setPerPage(6);
-    //         refetch()
-    //     }
-    //     else {
-    //         setPerPage(12)
-    //         refetch()
-    //     }
-    //       const handleResize = () => {
-    //         setScreenWidth(window.innerWidth);
-    //       };
-    //       window.addEventListener('resize', handleResize);
-    //       return () => {
-    //       window.removeEventListener('resize', handleResize);
-    //       };
-    // },[])
+    useEffect(() => {
+        if (screenWidth < RESPONSIVE_WIDTH) {
+            setPerPage(6);
+            refetch()
+        }
+        else {
+            setPerPage(12)
+            refetch()
+        }
+          const handleResize = () => {
+            setScreenWidth(window.innerWidth);
+          };
+          window.addEventListener('resize', handleResize);
+          return () => {
+          window.removeEventListener('resize', handleResize);
+          };
+    },[])
     
     useEffect(() => {
         refetch();
@@ -78,7 +78,7 @@ const Home = () => {
     }
 
     return (
-        <div className='bg-primary flex flex-col items-center py-20'>
+        <div className='bg-primary flex flex-col items-center py-10 sm:py-20'>
             {bannerData ? <div className='sm:px-6 lg:px-32 xl:px-72 flex w-full justify-center flex-col gap-8 pb-10 items-center'>
                 <img
                     onClick={handleBannerBlogNavigate}
