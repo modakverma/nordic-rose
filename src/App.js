@@ -11,6 +11,7 @@ function App() {
     <div className="font-new-york2">
       <QueryClientProvider client={queryClient}>
         <PagesRouter />
+        fasdfa
        <ReactQueryDevtools initialIsOpen={false} position='bottom-right'/>
       </QueryClientProvider>
       <ToastContainer />
